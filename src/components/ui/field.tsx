@@ -14,12 +14,13 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(function Field
   return (
     <ChakraField.Root ref={ref} {...rest}>
       {label && (
-        <ChakraField.Label>
+        <ChakraField.Label color={'textFooter'} fontSize={'xs'} fontWeight={'medium'} lineHeight={'xs'}>
           {label}
 
           <ChakraField.RequiredIndicator fallback={optionalText} />
         </ChakraField.Label>
       )}
+
       {children}
 
       {helperText && <ChakraField.HelperText>{helperText}</ChakraField.HelperText>}
