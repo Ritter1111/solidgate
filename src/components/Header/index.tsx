@@ -2,8 +2,14 @@ import { Flex, Text, Box } from '@chakra-ui/react';
 
 const Header = () => {
   return (
-    <Box as="header" width="full" height="56px" position={{ base: 'absolute', md: 'relative' }}>
-      <Flex align="center" justify="flex-end" height="full">
+    <Box
+      as="header"
+      height="56px"
+      right={0}
+      position={{ base: 'absolute', md: 'relative' }}
+      width={{ base: 'full', md: 'auto' }}
+    >
+      <Flex align="center" justify="flex-end" top={0} right={0}>
         <Text
           display={{ base: 'none', md: 'block' }}
           color="textPrimary"

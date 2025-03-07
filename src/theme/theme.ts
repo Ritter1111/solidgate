@@ -13,10 +13,22 @@ export const config = defineConfig({
       sm: '320px',
       md: '1000px',
     },
+    keyframes: {
+      fadeOut: {
+        from: { opacity: '1', transform: 'translateY(0px) ' },
+        to: { opacity: 0, transform: 'translateY(-16px) ' },
+      },
+      fadeIn: {
+        from: { opacity: 0, transform: 'translateY(16px) ' },
+        to: { opacity: 1, transform: 'translateY(0px) ' },
+      },
+    },
+
     tokens: {
       colors: {
-        'green-50': { value: '#029C3F' },
-        'green-100': { value: '#028837' },
+        'green-50': { value: 'hsl(144, 97%, 31%)' }, // hover
+        'green-100': { value: 'hsl(144, 97%, 27%)' }, // active
+        'green-200': { value: 'hsl(144, 97%, 23%)' }, // default
 
         'gray-50': { value: '#797E8B' },
 
