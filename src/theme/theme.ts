@@ -8,7 +8,7 @@ export const config = defineConfig({
     },
   },
 
-  theme: {  
+  theme: {
     breakpoints: {
       sm: '320px',
       md: '768px',

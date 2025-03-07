@@ -41,7 +41,7 @@ export const InputGroup = React.forwardRef<HTMLDivElement, InputGroupProps>(func
         ...(endElement && { pe: `calc(var(--input-height) - ${endOffset})` }),
         ...children.props,
       })}
-      
+
       {endElement && (
         <InputElement placement="end" {...endElementProps}>
           {endElement}
