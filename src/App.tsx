@@ -1,9 +1,7 @@
+import CheckoutPage from '@/components/pages/CheckoutPage';
+
 function App() {
-  return (
-    <>
-      <h1>Hello World</h1>
-    </>
-  );
+  return <CheckoutPage />
 }
 
 export default App;
