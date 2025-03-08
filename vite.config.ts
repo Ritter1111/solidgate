@@ -11,6 +11,8 @@ export default defineConfig({
       "@/components": path.resolve(__dirname, "./src/components"),
       "@/theme": path.resolve(__dirname, "./src/theme"),
       "@/assets": path.resolve(__dirname, "./src/assets"),
+      "@/constants": path.resolve(__dirname, "./src/constants"),
+      "@/validation": path.resolve(__dirname, "./src/validation"),
     },
   },
 })

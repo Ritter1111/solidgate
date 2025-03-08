@@ -5,7 +5,7 @@ import PlanNotice from '@/components/Checkout/PlanNotice';
 
 const CheckoutSummary = () => {
   return (
-    <Flex flexDirection="column" gap="lg" maxWidth={'420px'} width={'full'}>
+    <Flex flexDirection="column" gap="lg" maxWidth="420px" width="full">
       <Flex flexDirection={'column'} alignItems={{ base: 'center', md: 'start' }}>
         <Text fontSize="lg" fontWeight="semibold" color="textSecondary" lineHeight="xl">
           Checkout
@@ -25,7 +25,7 @@ const CheckoutSummary = () => {
       </Button>
 
       <Box>
-        <Flex align="center" marginBottom={'md'}>
+        <Flex align="center" marginBottom="md">
           <Box flex="1" borderBottom="1px solid" borderColor="separatorColor" />
 
           <Text px="md" fontSize="sm" fontWeight="regular" color="textFooter">

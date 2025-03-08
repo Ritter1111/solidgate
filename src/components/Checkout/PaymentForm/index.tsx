@@ -1,84 +1,62 @@
-import { Button, Input, Stack, HStack, Box } from '@chakra-ui/react';
-import { usePaymentInputs } from 'react-payment-inputs';
-
-import { Field } from '@/components/UI/Field';
+import { HStack, Flex, Stack } from '@chakra-ui/react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 
+import PaymentFieldController from '@/components/Checkout/PaymentFieldController';
+import { PaymentFormValues, paymentSchema } from '@/validation/paymentValidationSchema';
+import { cardNumberMask, expiryDateMask, cvcMask } from '@/constants/paymentMasks';
+import SubmitPaymentButton from '@/components/Checkout/PaymentButton';
+
 const PaymentForm: React.FC = () => {
-  const { getExpiryDateProps, getCVCProps, getCardNumberProps } = usePaymentInputs();
+  const [inPending, setInPending] = useState<boolean>(false);
 
-  const [isProcessing, setIsProcessing] = useState(false);
+  const { control, handleSubmit, reset } = useForm<PaymentFormValues>({
+    resolver: yupResolver(paymentSchema),
+    defaultValues: {
+      cardNumber: '',
+      expiryDate: '',
+      cvc: '',
+    },
+  });
 
-  const handleClick = () => {
-    if (isProcessing) return;
+  const onSubmit = () => {
+    if (inPending) return;
 
-    setIsProcessing(true);
+    setInPending(true);
+
     setTimeout(() => {
-      setIsProcessing(false);
+      setInPending(false);
+
+      reset();
     }, 1500);
   };
 
   return (
-    <Stack as="form" gap="md">
-      <Field label="Card Number">
-        <Input
-          {...getCardNumberProps()}
-          _focus={{ borderColor: 'blue', borderWidth: '2px', outline: 'none' }}
-          borderColor="inputBorderColor"
+    <Stack as="form" gap="md" onSubmit={handleSubmit(onSubmit)}>
+      <Flex gap="md" flexDirection="column">
+        <PaymentFieldController
+          control={control}
+          name="cardNumber"
+          label="Card Number"
           placeholder="1234 1234 1234 1234"
+          mask={cardNumberMask}
         />
-      </Field>
 
-      <HStack>
-        <Field label="Expiration Date">
-          <Input
-            {...getExpiryDateProps()}
-            _focus={{ borderColor: 'blue', borderWidth: '2px', outline: 'none' }}
-            borderColor="inputBorderColor"
+        <HStack alignItems="flex-start">
+          <PaymentFieldController
+            control={control}
+            name="expiryDate"
+            label="Expiration Date"
+            placeholder="MM/YY"
+            mask={expiryDateMask}
           />
-        </Field>
 
-        <Field label="CVC">
-          <Input
-            {...getCVCProps()}
-            _focus={{ borderColor: 'blue', borderWidth: '2px', outline: 'none' }}
-            borderColor="inputBorderColor"
-            placeholder="•••"
-          />
-        </Field>
-      </HStack>
+          <PaymentFieldController control={control} name="cvc" label="CVC" placeholder="•••" mask={cvcMask} />
+        </HStack>
 
-      <Button
-        background="green-100"
-        borderRadius="sm"
-        size="md"
-        onClick={handleClick}
-        disabled={isProcessing}
-        _disabled={{
-          opacity: 1,
-          cursor: 'auto',
-        }}
-        _hover={{
-          background: 'green-50',
-          transform: 'translateY(-2px)',
-          transition: 'transform 0.2s ease-in',
-        }}
-        _active={{
-          transform: 'translateY(2px) !important',
-          filter: 'brightness(0.9)',
-          transition: 'transform 0.2s ease-in',
-        }}
-      >
-        <Box as="span" position="absolute" animation={isProcessing ? 'fadeOut' + ' 120ms ease-out forwards' : 'none'}>
-          Pay 299.99 UAH
-        </Box>
-
-        {isProcessing && (
-          <Box as="span" position="absolute" animation={'fadeIn' + ' 120ms ease-out forwards'}>
-            Processing payment...
-          </Box>
-        )}
-      </Button>
+        <SubmitPaymentButton inPending={inPending} />
+      </Flex>
     </Stack>
   );
 };

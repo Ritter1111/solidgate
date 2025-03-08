@@ -14,12 +14,12 @@ const CheckoutPage: React.FC = () => {
       <Flex
         as="main"
         flexGrow={1}
-        direction={{ base: 'column', md: 'row' }}
-        justifyContent={'center'}
-        align={{ base: 'center', md: 'start' }}
+        justifyContent="center"
         gap={8}
         position="relative"
         paddingX={{ base: 'md', md: '0' }}
+        align={{ base: 'center', md: 'start' }}
+        direction={{ base: 'column', md: 'row' }}
       >
         {/* <IconButton position="absolute" top="0" left="-40px" variant="ghost" _hover={{ bg: 'transparent' }}>
           <ArrowLeft />
