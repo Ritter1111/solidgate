@@ -20,7 +20,7 @@ const CheckoutSummarySection = () => {
             Checkout
           </Text>
 
-          <Image position="absolute" top={{ base: '6', md: '3' }} left={{ base: '6', md: '-6' }} src={arrowLeft} />
+          <Image position="absolute" top={3} left={{ base: '6', md: '-6' }} src={arrowLeft} />
         </Box>
 
         <Text fontSize={{ base: 'xxl', md: '3xl' }} fontWeight="semibold" color="textSecondary" lineHeight="xl">

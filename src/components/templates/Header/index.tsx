@@ -6,7 +6,7 @@ const Header = () => {
       as="header"
       height="56px"
       right={0}
-      top={{ base: '3', md: '0' }}
+      top={0}
       position={{ base: 'absolute', md: 'relative' }}
       width={{ base: 'full', md: 'auto' }}
     >
@@ -17,6 +17,7 @@ const Header = () => {
           padding="sm"
           fontWeight="medium"
           disabled
+          display={{ base: 'none', md: 'block' }}
           _disabled={{ color: 'gray.500', cursor: 'default' }}
           _hover={{ bg: 'gray.100' }}
         >
