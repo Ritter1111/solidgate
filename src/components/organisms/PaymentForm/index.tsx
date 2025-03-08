@@ -1,12 +1,14 @@
-import { HStack, Flex, Stack } from '@chakra-ui/react';
+import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useState } from 'react';
+import { HStack, Flex, Stack, Image } from '@chakra-ui/react';
 
-import PaymentFieldController from '@/components/Checkout/PaymentFieldController';
 import { PaymentFormValues, paymentSchema } from '@/validation/paymentValidationSchema';
 import { cardNumberMask, expiryDateMask, cvcMask } from '@/constants/paymentMasks';
-import SubmitPaymentButton from '@/components/Checkout/PaymentButton';
+import { SubmitPaymentButton } from '@/components/molecules';
+import { MaskedInputController } from '@/components/organisms';
+import InfoIcon from '@/assets/Info.svg';
 
 const PaymentForm: React.FC = () => {
   const [inPending, setInPending] = useState<boolean>(false);
@@ -20,22 +22,31 @@ const PaymentForm: React.FC = () => {
     },
   });
 
+  const successToast = () =>
+    toast.success('Your payment was successful!', {
+      duration: 4000,
+    });
+
   const onSubmit = () => {
-    if (inPending) return;
+    if (inPending) {
+      return;
+    }
 
     setInPending(true);
 
     setTimeout(() => {
       setInPending(false);
 
+      successToast();
+
       reset();
     }, 1500);
   };
 
   return (
-    <Stack as="form" gap="md" onSubmit={handleSubmit(onSubmit)}>
+    <Stack as="form" marginTop="md" onSubmit={handleSubmit(onSubmit)}>
       <Flex gap="md" flexDirection="column">
-        <PaymentFieldController
+        <MaskedInputController
           control={control}
           name="cardNumber"
           label="Card Number"
@@ -44,7 +55,7 @@ const PaymentForm: React.FC = () => {
         />
 
         <HStack alignItems="flex-start">
-          <PaymentFieldController
+          <MaskedInputController
             control={control}
             name="expiryDate"
             label="Expiration Date"
@@ -52,7 +63,14 @@ const PaymentForm: React.FC = () => {
             mask={expiryDateMask}
           />
 
-          <PaymentFieldController control={control} name="cvc" label="CVC" placeholder="•••" mask={cvcMask} />
+          <MaskedInputController
+            control={control}
+            name="cvc"
+            label="CVC"
+            placeholder="•••"
+            mask={cvcMask}
+            endElement={<Image src={InfoIcon} cursor="pointer" />}
+          />
         </HStack>
 
         <SubmitPaymentButton inPending={inPending} />

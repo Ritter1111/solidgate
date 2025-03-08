@@ -6,13 +6,13 @@ export interface FieldProps extends Omit<ChakraField.RootProps, 'label'> {
   errorText?: React.ReactNode;
 }
 
-export const Field = React.forwardRef<HTMLDivElement, FieldProps>(function Field(props, ref) {
+const Field = React.forwardRef<HTMLDivElement, FieldProps>(function Field(props, ref) {
   const { label, children, errorText, ...rest } = props;
 
   return (
-    <ChakraField.Root gap="xs" ref={ref} {...rest} invalid={!!errorText}>
+    <ChakraField.Root gap="xs" ref={ref} {...rest}>
       {label && (
-        <ChakraField.Label color="textFooter" fontSize="xs" fontWeight="medium" lineHeight="xs">
+        <ChakraField.Label color="dustyBlue" fontSize="xs" fontWeight="medium" lineHeight="xs">
           {label}
         </ChakraField.Label>
       )}
@@ -27,3 +27,5 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(function Field
     </ChakraField.Root>
   );
 });
+
+export default Field;

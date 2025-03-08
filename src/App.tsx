@@ -1,7 +1,7 @@
-import CheckoutPage from '@/components/Checkout/CheckoutPage';
+import { PaymentPage } from '@/components/pages';
 
 function App() {
-  return <CheckoutPage />;
+  return <PaymentPage />;
 }
 
 export default App;

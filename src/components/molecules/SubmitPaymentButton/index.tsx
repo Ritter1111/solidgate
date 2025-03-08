@@ -10,8 +10,8 @@ const SubmitPaymentButton: React.FC<SubmitPaymentButtonProps> = ({ inPending }) 
       type="submit"
       background="green-100"
       borderRadius="sm"
-      size="md"
       disabled={inPending}
+      transition="transform 80ms ease-in"
       _disabled={{
         opacity: 1,
         cursor: 'auto',
@@ -19,12 +19,10 @@ const SubmitPaymentButton: React.FC<SubmitPaymentButtonProps> = ({ inPending }) 
       _hover={{
         background: 'green-50',
         transform: inPending ? 'none' : 'translateY(-2px)',
-        transition: 'transform 0.2s ease-in',
       }}
       _active={{
-        transform: inPending ? 'none' : 'translateY(2px) !important',
+        transform: 'translateY(2px) !important',
         filter: 'brightness(0.9)',
-        transition: 'transform 0.2s ease-in',
       }}
     >
       <Box as="span" position="absolute" animation={inPending ? 'fadeOut 120ms ease-out forwards' : 'none'}>

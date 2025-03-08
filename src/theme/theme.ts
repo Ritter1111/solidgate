@@ -13,6 +13,7 @@ export const config = defineConfig({
       sm: '320px',
       md: '1000px',
     },
+
     keyframes: {
       fadeOut: {
         from: { opacity: '1', transform: 'translateY(0px) ' },
@@ -30,23 +31,20 @@ export const config = defineConfig({
         'green-100': { value: 'hsl(144, 97%, 27%)' }, // active
         'green-200': { value: 'hsl(144, 97%, 23%)' }, // default
 
-        'gray-50': { value: '#797E8B' },
+        'gray-100': { value: '#F7F7F9' },
+        'gray-200': { value: '#E0E2EA' },
+        'gray-250': { value: '#C7C9D1' },
+        'gray-300': { value: '#797E8B' },
+
+        yellow: { value: '#F6C557' },
 
         textPrimary: { value: '#B0B4BE' },
         textSecondary: { value: '#363A43' },
-        textFooter: { value: '#666C7B' },
 
-        background: { value: '#FFFFFF' },
-
-        borderColor: { value: '#E4E6EC' },
-
-        inputBorderColor: { value: '#C7C9D1' },
-
-        separatorColor: { value: '#E0E2EA' },
-
-        cardBg: { value: '#F7F7F9' },
+        darkBorderColor: { value: '#E4E6EC' },
 
         blue: { value: '#89CFF0' },
+        dustyBlue: { value: '#666C7B' },
       },
 
       fontWeights: {
