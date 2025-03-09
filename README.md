@@ -7,5 +7,5 @@ Tech Stack:
 - React Hook Form
 - React Text Mask
 
-## Deploy: 
+## Deploy: https://leafy-wisp-d0cc48.netlify.app/
 
