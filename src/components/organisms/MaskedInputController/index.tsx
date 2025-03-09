@@ -27,7 +27,7 @@ const MaskedInputController = <T extends FieldValues>({
       control={control}
       render={({ field, fieldState }) => (
         <Field {...field} label={label} errorText={fieldState.error?.message} invalid={!!fieldState.error}>
-          <InputGroup endElement={endElement} width="full">
+          <InputGroup endElement={endElement} width="full" boxShadow="0px 2px 4px -2px rgba(0, 0, 0, 0.12)">
             <MaskedInput
               mask={mask}
               value={field.value}

@@ -17,6 +17,7 @@ const PaymentPage: React.FC = () => {
         paddingX={{ base: 'md', md: '0' }}
         align={{ base: 'center', md: 'start' }}
         direction={{ base: 'column', md: 'row' }}
+        justifyContent={{ base: 'space-between', md: 'start' }}
       >
         <CheckoutSummarySection />
 
